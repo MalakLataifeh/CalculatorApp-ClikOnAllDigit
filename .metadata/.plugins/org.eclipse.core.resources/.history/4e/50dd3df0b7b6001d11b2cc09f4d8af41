@@ -1,0 +1,45 @@
+import java.util.Random;
+
+import org.testng.annotations.Test;
+
+public class MyTestCases extends parameter {
+
+	@Test(invocationCount = 15) 
+	public void checkTheWebSiteLanguage()
+	{
+		
+		
+		String[] mywebsitelanguage = {"https://ae.almosafer.com/en" , "https://ae.almosafer.com/ar" };
+		
+		Random rand = new Random();
+		
+		//System.out.println(rand+"************"); hai r7 t3tene eshi mo mfhom lahek r7 ast5dem nextint
+		//System.out.println(rand.nextInt(0,80000)%2);
+		
+		
+		int RandomNumber = rand.nextInt(0,80000)%2;
+		driver.get(mywebsitelanguage[RandomNumber]);
+		
+		String ActualTitle = driver.getTitle();
+		
+		//myassertion.assertEquals(ActualTitle, "فنادق،احجز فنادق رخيصة واحصل على أسعار منخفضة على المسافر");
+		
+		if(RandomNumber==1)
+		{
+			myassertion.assertEquals(ActualTitle, "فنادق،احجز فنادق رخيصة واحصل على أسعار منخفضة على المسافر");
+		}
+		else
+		{
+			myassertion.assertEquals(ActualTitle, "Hotels, book cheap hotels & get discounted prices on Almosafer");
+	
+		}
+		myassertion.assertAll();
+	
+	}
+	
+	
+	
+	
+	
+	
+}

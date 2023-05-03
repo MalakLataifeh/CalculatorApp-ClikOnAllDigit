@@ -1,0 +1,43 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+
+public class Myclass {
+ 
+	WebDriver driver = new FirefoxDriver();
+	SoftAssert myAssertion = new  SoftAssert();
+	
+	@BeforeTest
+	public void mysetup() {
+		 driver.get( "https://www.google.com/");
+		 	}
+	
+	@Test
+	public void mytest() {
+		 driver.findElement(By.xpath( "//*[@id=\"SIvCob\"]/a[2]")).click();
+	     driver.findElement(By.xpath( "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")).sendKeys("Malak Lataifeh");
+	     driver.findElement(By.xpath( "/html/body/div[1]/div[3]/form/div[1]/div[1]/div[4]/center/input[1]")).click();
+	     List<WebElement> A = driver.findElements(By.className("LHJvCe"));
+			for (int i=0;i<A.size();i++) {
+				 String ActualResult = A.get(i).getText();
+				 System.out.println(ActualResult);
+				 
+				 String ExpectedResult = "10";
+				 myAssertion.assertEquals(ActualResult, ExpectedResult);
+				 myAssertion.assertAll();
+			 
+		
+	}}}
+	
+	
+	
+
